@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html land="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>{% block title %}ColdOnes Podcast{% endblock %}</title>
+		<meta name="description" content="{% block description %}Homepage of the ColdOnes Podcast!{% endblock %}">
+		
+		<!-- TODO: Add favicon -->
+		<link rel="icon" type="image/png" href="">
+		<link rel="apple-touch-icon" href="">
+
+		<!-- TODO: What is this? if I support it I need a browserconfig.xml -->
+		<meta name="msapplication-config" content="browserconfig.xml">
+		
+		{% block canonical_url %}
+		<link rel="canonical" href="">
+		{% endblock %}
+
+		<!-- Critical CSS -->
+                {% block critical_css %}
+		<style>
+                </style>
+		{% endblock %}
+
+		<!-- Facebook OG Card and Twitter Card -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://example.com/page.html">
+		<meta property="og:title" content="Content Title">
+		<meta property="og:image" content="https://example.com/image.jpg">
+		<meta property="og:description" content="Description Here">
+		<meta property="og:site_name" content="Site Name">
+		<meta property="og:locale" content="en_US">
+		<!-- Next tags are optional but recommended -->
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@site_account">
+		<meta name="twitter:creator" content="@individual_account">
+		<meta name="twitter:url" content="https://example.com/page.html">
+		<meta name="twitter:title" content="Content Title">
+		<meta name="twitter:description" content="Content description less than 200 characters">
+		<meta name="twitter:image" content="https://example.com/image.jpg">
+		
+		<link rel="stylesheet" type="text/css" href="/static/website/normalize.css">
+		{% block page_css %}
+		<!-- CSS Files -->
+		{% endblock %}
+		{% block page_js %}
+		<!-- JS Files -->
+		{% endblock %}
+	</head>
+
+	<body>
+		{% block content %}
+		<h1>{{ self.title() }}</h1>
+		<p>{{ self.description() }}</p>
+		{% endblock %}
+	</body>
+</html>

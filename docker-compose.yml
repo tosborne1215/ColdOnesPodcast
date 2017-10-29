@@ -1,0 +1,55 @@
+#####
+# Docker compose YAML file
+#
+# For documentation see: https://docs.docker.com/compose/yml/
+#####
+
+version: "3.3"
+
+volumes:
+    static-files:
+    pgdata:
+    
+services:
+    db:
+        image: postgres:9.6
+        volumes:
+            - pgdata:/var/lib/postgresql/data/pgdata
+        env_file:
+            - ./config/environment/webapp_dev.env
+
+    webserver:
+        build:
+            context: .
+            dockerfile: services/webserver/Dockerfile
+        expose:
+            - "80"
+            - "443"
+#Change to prod ports or put it behind a reverse web proxy
+        ports:
+            - "8080:80"
+        depends_on:
+            - webapp
+        volumes:
+            - static-files:/srv/static-files
+        env_file:
+            - ./config/environment/webserver_dev.env
+
+    webapp:
+        build:
+            context: webapp
+            dockerfile: Dockerfile
+            args: 
+              DJANGO_PROJECT_NAME: website
+        volumes:
+            - ./webapp/website:/srv/website
+            - static-files:/srv/static-files
+        restart: unless-stopped
+        expose:
+            - "443"
+            - "80"
+        depends_on:
+            - db
+        env_file:
+            - ./config/environment/webapp_dev.env
+
