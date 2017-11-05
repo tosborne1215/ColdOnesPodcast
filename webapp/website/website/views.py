@@ -5,4 +5,4 @@ from django.shortcuts import render
 def index(request):
     response = request
     context = dict()
-    return render(response,'index.html',context)
+    return render(response,'index.html',context,status=200,using='jinja2')

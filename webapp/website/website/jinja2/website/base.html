@@ -45,7 +45,7 @@
 		<meta name="twitter:description" content="Content description less than 200 characters">
 		<meta name="twitter:image" content="https://example.com/image.jpg">
 		
-		<link rel="stylesheet" type="text/css" href="/static/website/normalize.css">
+		<link rel="stylesheet" type="text/css" href="{{ static("website/css/normalize.css") }}">
 		{% block page_css %}
 		<!-- CSS Files -->
 		{% endblock %}
@@ -56,8 +56,30 @@
 
 	<body>
 		{% block content %}
-		<h1>{{ self.title() }}</h1>
-		<p>{{ self.description() }}</p>
+		<div class="content">
+			{% block content_header %}
+			<div class="header">
+				<h1>{{ self.title() }}</h1>
+				{% block navigation %}
+				{% endblock %}
+			</div>
+			{% endblock %}
+
+			{% block page_content %}
+			<p>{{ self.description() }}</p>
+			{% endblock %}
+			{% block sidebar %}
+			<div class="sidebar">
+				<p>side bar content</p>
+			</div>
+			{% endblock %}
+			{% block footer %}
+			<div class="footer">
+				<!-- TODO: Footer in website/base.html -->
+				<p>Still dont know what I need here</p>
+			</div>
+			{% endblock %}
+		</div>
 		{% endblock %}
 	</body>
 </html>

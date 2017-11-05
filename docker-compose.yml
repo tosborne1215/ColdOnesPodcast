@@ -31,7 +31,7 @@ services:
         depends_on:
             - webapp
         volumes:
-            - static-files:/srv/static-files
+            - static-files:/srv/static
         env_file:
             - ./config/environment/webserver_dev.env
 
@@ -43,7 +43,7 @@ services:
               DJANGO_PROJECT_NAME: website
         volumes:
             - ./webapp/website:/srv/website
-            - static-files:/srv/static-files
+            - static-files:/srv/static
         restart: unless-stopped
         expose:
             - "443"

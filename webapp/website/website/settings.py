@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'website',
+    'podcast',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -53,14 +56,8 @@ ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
-        'DIRS': [os.path.join(BASE_DIR, 'website/jinja2/website')],
-        'APP_DIRS': True,
-        'OPTIONS': {'environment': os.environ.get('DJANGO_PROJECT_NAME') + '.jinja2_config.Environment',}, 
-    },
-    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'website/jinja2/website')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,6 +69,14 @@ TEMPLATES = [
             ],
         },
     },
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [os.path.join(BASE_DIR, 'website/jinja2/website')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': 'website.jinja2_config.environment' 
+        }
+    }
 ]
 
 WSGI_APPLICATION = os.environ.get('DJANGO_PROJECT_NAME') + '.wsgi.application'
