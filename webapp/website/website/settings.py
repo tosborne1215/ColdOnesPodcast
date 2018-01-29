@@ -25,7 +25,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('PRODUCTION') == "false" else False
 
-ALLOWED_HOSTS = []
+if DEBUG is False:
+    ALLOWED_HOSTS = ['www.acouplecoldones.com', 'acouplecoldones.com', 'coupleofcoldones.party', 'www.coupleofcoldones.party']
+else:
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -52,6 +55,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache',
+    }
+}
+
 ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
@@ -74,7 +84,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'website/jinja2/website')],
         'APP_DIRS': True,
         'OPTIONS': {
-            'environment': 'website.jinja2_config.environment' 
+            'environment': 'website.jinja2_config.environment'
         }
     }
 ]
@@ -133,3 +143,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_ROOT = '/srv/static/'
 STATIC_URL = '/static/'
+
+# MEDIA_ROOT = ''
+# MEDIA_URL = ''
+
+do_blockstorage_ns = ''
+if DEBUG is True:
+    do_blockstorage_ns = 'TestColdOne'
+else:
+    do_blockstorage_ns = 'ColdOne'
+
+CUSTOM_STORAGE_OPTIONS = {
+    'aws_access_key_id':'6YAHACWH2IGRHFJCXIOU',
+    'aws_secret_access_key':'crvP5sqsCT4feRnKu9KR16h5Z6BTH75zdA6PCZxeFps',
+    'endpoint_url': 'https://nyc3.digitaloceanspaces.com',
+    'region_name': 'nyc3',
+    'namespace': do_blockstorage_ns,
+    'bucket': 'episodes',
+}

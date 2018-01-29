@@ -16,7 +16,7 @@ services:
         volumes:
             - pgdata:/var/lib/postgresql/data/pgdata
         env_file:
-            - ./config/environment/webapp_dev.env
+            - ./config/environment/webapp_prod.env
 
     webserver:
         build:
@@ -25,9 +25,10 @@ services:
         expose:
             - "80"
             - "443"
-#Change to prod ports or put it behind a reverse web proxy
-        ports:
-            - "8080:80"
+#The ports below are only used for development testing.
+#TODO: Remove need for commenting out port during prod go live
+#        ports:
+#            - "8080:80"
         depends_on:
             - webapp
         volumes:
@@ -51,5 +52,9 @@ services:
         depends_on:
             - db
         env_file:
-            - ./config/environment/webapp_dev.env
+            - ./config/environment/webapp_prod.env
 
+networks:
+    default:
+        external:
+            name: webproxy

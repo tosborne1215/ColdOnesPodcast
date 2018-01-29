@@ -1,4 +1,5 @@
-Django
+Django==1.11
 psycopg2
 Jinja2
 uwsgi
+boto3

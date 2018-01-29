@@ -2,7 +2,7 @@
 
 #####
 # Postgres: wait until container is created
-# 
+#
 # $?                most recent foreground pipeline exit status
 # > /dev/null 2>&1  get stderr while discarding stdout
 #####
@@ -39,8 +39,8 @@ else
 		#
 		# This will give some errors when there is no database to be flushed, but
 		# you can ignore these messages.
-		echo "==> Django setup, executing: flush"
-		python3 /srv/${DJANGO_PROJECT_NAME}/manage.py flush --noinput
+		#echo "==> Django setup, executing: flush"
+		#python3 /srv/${DJANGO_PROJECT_NAME}/manage.py flush --noinput
 
 		# Django: migrate
 		#
@@ -49,7 +49,7 @@ else
 		# table schema match your models, just that the right table names exist).
 		echo "==> Django setup, executing: migrate"
 		python3 /srv/${DJANGO_PROJECT_NAME}/manage.py migrate --fake-initial
-		
+
 		# Django: collectstatic
 		echo "==> Django setup, executing: collectstatic"
 		python3 /srv/${DJANGO_PROJECT_NAME}/manage.py collectstatic --noinput
