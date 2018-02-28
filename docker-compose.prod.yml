@@ -16,7 +16,7 @@ services:
         volumes:
             - pgdata:/var/lib/postgresql/data/pgdata
         env_file:
-            - ./config/environment/webapp_dev.env
+            - ./config/environment/webapp_prod.env
         networks:
             - default
 
@@ -31,17 +31,17 @@ services:
         volumes:
             - static-files:/srv/static
         env_file:
-            - ./config/environment/webserver_dev.env
+            - ./config/environment/webserver_prod.env
         networks:
             - web
             - default
         labels:
-            - "traefik.backend=test.acouplecoldones.com"
+            - "traefik.backend=acouplecoldones.com"
             - "traefik.docker.network=web"
-            - "traefik.frontend.rule=Host:test.acouplecoldones.com"
+            - "traefik.frontend.rule=Host:acouplecoldones.com"
             - "traefik.enable=true"
             - "traefik.port=8081"
-            - "traefik.default.protocol=http"
+            - "traefik.default.protocol=https"
 
     webapp:
         build:
@@ -56,7 +56,7 @@ services:
         depends_on:
             - db
         env_file:
-            - ./config/environment/webapp_dev.env
+            - ./config/environment/webapp_prod.env
         networks:
             - default
         expose:
