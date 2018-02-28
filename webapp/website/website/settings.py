@@ -26,9 +26,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = True if os.environ.get('PRODUCTION') == "false" else False
 
 if DEBUG is False:
-    ALLOWED_HOSTS = ['www.acouplecoldones.com', 'acouplecoldones.com', 'coupleofcoldones.party', 'www.coupleofcoldones.party']
+    ALLOWED_HOSTS = ['www.acouplecoldones.com', 'acouplecoldones.com',
+                     'coupleofcoldones.party', 'www.coupleofcoldones.party']
 else:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['test.acouplecoldones.com']
 
 
 # Application definition
@@ -154,8 +155,8 @@ else:
     do_blockstorage_ns = 'ColdOne'
 
 CUSTOM_STORAGE_OPTIONS = {
-    'aws_access_key_id':'6YAHACWH2IGRHFJCXIOU',
-    'aws_secret_access_key':'crvP5sqsCT4feRnKu9KR16h5Z6BTH75zdA6PCZxeFps',
+    'aws_access_key_id': '6YAHACWH2IGRHFJCXIOU',
+    'aws_secret_access_key': 'crvP5sqsCT4feRnKu9KR16h5Z6BTH75zdA6PCZxeFps',
     'endpoint_url': 'https://nyc3.digitaloceanspaces.com',
     'region_name': 'nyc3',
     'namespace': do_blockstorage_ns,

@@ -21,10 +21,10 @@
 
 		<!-- Critical CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        {% block critical_css %}
+				{% block critical_css %}
 		<style>
 			
-        </style>
+				</style>
 		{% endblock %}
 
 		<!-- Facebook OG Card and Twitter Card -->
@@ -57,111 +57,137 @@
 
 		{% block bootstrap_tags %}
 		<!-- Optional JavaScript -->
-	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		{% endblock %}
 	</head>
 
 	<body>
 		{% block content %}
 		<!-- title bar and menu bar -->
-		<div class="container-fluid sticky-top">
-			<div class="row">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
 				<div class="col">
-					<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-					  <a class="navbar-brand" href="#">A Couple Cold Ones</a>
-					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					    <span class="navbar-toggler-icon"></span>
-					  </button>
+					<a class="navbar-brand" href="{{ url("index") }}">
+						<img style="max-width:250px;max-height:250px;" src="https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg" />
+					</a>
+					<!--<img style="max-height: 250px" src="{{ static("website/img/coldones_banner.jpg") }}" />-->
+				</div>
+			</div>
+			<div class="row sticky-top pb-md-3">
+				<div class="col" style="background-color: #e3f2fd;">
+					<nav class="navbar navbar-expand-lg navbar-light">
 
-					  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-					    <ul class="navbar-nav mr-auto">
-					      <li class="nav-item active">
-					        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-					      </li>
-					      <li class="nav-item">
-					        <a class="nav-link" href="#">About</a>
-					      </li>
-					      <li class="nav-item">
-					        <a class="nav-link" href="#">Deathstrodomus</a>
-					      </li>
-					      <li class="nav-item">
-					        <a class="nav-link" href="#">Forum</a>
-					      </li>
-					      <li class="nav-item">
-					        <a class="nav-link" href="#">Contact</a>
-					      </li>
-					      <li class="nav-item dropdown">
-					        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					          Episodes
-					        </a>
-					        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					          <a class="dropdown-item" href="#">Latest <span class="badge badge-secondary">New</span></a>
-					          <a class="dropdown-item" href="#">Previous</a>
-					          <div class="dropdown-divider"></div>
-					          <a class="dropdown-item" href="#">Archive</a>
-					        </div>
-					      </li>
-					    </ul>
-					    <form class="form-inline my-2 my-lg-0">
-					      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					    </form>
-					  </div>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item active">
+									<a class="nav-link" href="{{ url("index") }}">Home <span class="sr-only">(current)</span></a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ url("about") }}">About</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Deathstrodomus</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ url("forum") }}">Forum</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ url("contactus") }}">Contact</a>
+								</li>
+								{% if show_episodes %}
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Podcasts
+									</a>
+									
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="{{ url("podcast:episode", args=(latest,)) }}">Latest <span class="badge badge-secondary">New</span></a>
+										<a class="dropdown-item" href="{{ url("podcast:episode", args=(previous,)) }}">Previous</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{{ url("podcast:episodes") }}">Archive</a>
+									</div>
+								</li>
+								{% endif %}
+							</ul>
+							<form class="form-inline my-2 my-lg-0" action="{{ url("search") }}">
+								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+								<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+							</form>
+						</div>
 					</nav>
 				</div>
 			</div>
+			
+			{% block banner %}
 
-			<div class="row align-items-center justify-content-sm-center" style="margin-top: 2em;margin-bottom: 2em;">
-				<div class="col">
-					<blockquote class="blockquote text-center">
-					  <p class="mb-0">A light hearted podcast suitable for everyone in the family!</p>
-					  <footer class="blockquote-footer">A random stranger on <cite title="The Internet">The Internet</cite></footer>
-					</blockquote>
-				</div>
-				<div class="w-100 d-*-block d-sm-block"></div>
-				<div class="col">
-					<blockquote class="blockquote text-center">
-					  <p class="mb-0">These guys have some really wet blinks, which is my fetish. So every blink I hear, gets me closer to climaxing.</p>
-					  <footer class="blockquote-footer">A random stranger on <cite title="The Internet">The Facebook</cite></footer>
-					</blockquote>
-				</div>
-				<div class="w-100 d-none d-*-block"></div>
-				<div class="col">
-					<blockquote class="blockquote text-center">
-					  <p class="mb-0">These guys are fuck ugly but hilarious. I'm glad it's a pod cast</p>
-					  <footer class="blockquote-footer">A random stranger on <cite title="The Internet">The Twitter</cite></footer>
-					</blockquote>
-				</div>
-			</div>
-
+			{% endblock %}
 
 		<!-- main content -->
+			<div class="row justify-content-center">
+				<div class="order-1 order-lg-2 col-12 col-md-9 col-lg-9">
+					{% block body %}
 
-			<div class="row justify-content-md-center">
-				<div class="col-1">
-					<p> Ads go hear! </p>
+					{% endblock %}
 				</div>
-				<div class="col">
-					<h2>Some stuff</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				{% block promo_panel %}
+				<div class="order-3 order-md-3 col-10 col-md-12 col-lg-1 mt-md-5 align-items-center ml-auto mr-auto" style="min-width: 10em;">
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=T-Shirts or our store" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=T-Shirts or our store" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Look at this promo" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Pormo3" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=PORN2" />
+					</a>
 				</div>
-				<div class="col-1">
-					<p> T-Shirts</p>
-					<p>Promotions</p>
+				{% endblock %}
+				{% block ad_panel %}
+				<div class="order-2 order-md-2 order-lg-1 col-10 col-md-2 col-lg-1 mt-md-5 align-items-center ml-auto mr-auto" style="min-width: 10em;">
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
+					<a href="#">
+						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+					</a>
 				</div>
+
+				{% endblock %}
 			</div>
 
 			<div class="row align-items-end">
-				<div class="col text-center">Footer Stuff</div>
-				<div class="col text-center">Legal</div>
-				<div class="col text-center">Contact</div>
-				<div class="col text-center">Privacy</div>
+				<div class="col text-center"><a href="{{ url("index") }}">Footer Stuff</a></div>
+				<div class="col text-center"><a href="{{ url("legal") }}">Legal</a></div>
+				<div class="col text-center"><a href="{{ url("contactus") }}">Contact</a></div>
+				<div class="col text-center"><a href="{{ url("privacypolicy") }}">Privacy</a></div>
 			</div>
 		</div>
 		{% endblock %}

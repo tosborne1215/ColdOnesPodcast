@@ -16,25 +16,32 @@ services:
         volumes:
             - pgdata:/var/lib/postgresql/data/pgdata
         env_file:
-            - ./config/environment/webapp_prod.env
+            - ./config/environment/webapp_dev.env
+        networks:
+            - default
 
     webserver:
         build:
             context: .
             dockerfile: services/webserver/Dockerfile
         expose:
-            - "80"
-            - "443"
-#The ports below are only used for development testing.
-#TODO: Remove need for commenting out port during prod go live
-#        ports:
-#            - "8080:80"
+            - "8081"
         depends_on:
             - webapp
         volumes:
             - static-files:/srv/static
         env_file:
             - ./config/environment/webserver_dev.env
+        networks:
+            - web
+            - default
+        labels:
+            - "traefik.backend=test.acouplecoldones.com"
+            - "traefik.docker.network=web"
+            - "traefik.frontend.rule=Host:test.acouplecoldones.com"
+            - "traefik.enable=true"
+            - "traefik.port=8081"
+            - "traefik.default.protocol=http"
 
     webapp:
         build:
@@ -46,15 +53,15 @@ services:
             - ./webapp/website:/srv/website
             - static-files:/srv/static
         restart: unless-stopped
-        expose:
-            - "443"
-            - "80"
         depends_on:
             - db
         env_file:
-            - ./config/environment/webapp_prod.env
-
+            - ./config/environment/webapp_dev.env
+        networks:
+            - default
+        expose:
+            - "9002"
+            
 networks:
-    default:
-        external:
-            name: webproxy
+    web:
+        external: true

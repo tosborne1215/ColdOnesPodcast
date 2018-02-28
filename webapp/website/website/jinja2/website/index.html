@@ -1,3 +1,74 @@
 {% extends "base.html" %}
 
-{% block title %}ColdOnesPodcast{% endblock %}
+{% block title %}A Couple Cold Ones rawr{% endblock %}
+
+{% block banner %}
+			<div class="row align-items-center justify-content-sm-center pb-md-3">
+				<div class="col-12 col-md-12 col-lg-4">
+					<blockquote class="blockquote text-center">
+						<p class="mb-0">A light hearted podcast suitable for everyone in the family!</p>
+						<footer class="blockquote-footer">A random stranger on <cite title="The Internet">The Internet</cite></footer>
+					</blockquote>
+				</div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<blockquote class="blockquote text-center">
+						<p class="mb-0">These guys have some really wet blinks, which is my fetish. So every blink I hear, gets me closer to climaxing.</p>
+						<footer class="blockquote-footer">A random stranger on <cite title="The Internet">The Facebook</cite></footer>
+					</blockquote>
+				</div>
+				<div class="w-100 d-none d-*-block"></div>
+				<div class="col-12 col-md-6 col-lg-4">
+					<blockquote class="blockquote text-center">
+						<p class="mb-0">These guys are fuck ugly but hilarious. I'm glad it's a pod cast</p>
+						<footer class="blockquote-footer">A random stranger on <cite title="The Internet">The Twitter</cite></footer>
+					</blockquote>
+				</div>
+			</div>
+      <div class="row">
+        <div class="col-10 justify-content-center m-auto">
+          <div id="carouselEventBoard" class="carousel slide pb-md-5" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselEventBoard" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselEventBoard" data-slide-to="1"></li>
+              <li data-target="#carouselEventBoard" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="http://via.placeholder.com/350x150?text=juice of orange" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>I can just shove stuff down here right?</p>
+                  <audio controls>
+                    <source src="horse.ogg" type="audio/ogg">
+                    <source src="horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="http://via.placeholder.com/350x150?text=slide 2" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="http://via.placeholder.com/350x150?text=third" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselEventBoard" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselEventBoard" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+
+
+{% block body %}
+          <h2>So this is the index page</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+{% endblock %}

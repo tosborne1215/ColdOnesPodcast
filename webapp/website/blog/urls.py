@@ -14,20 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
 from . import views
 from podcast.podcast_feed import PodcastFeed
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^blog/', include('blog.urls', namespace="blog", app_name="blog")),
-    url(r'^podcast/', include('podcast.urls', namespace="podcast",app_name="podcast")),
-    url(r'^podcast.rss$', PodcastFeed(), name='podcastfeed'),
-    url(r'^contactus', views.IndexView.as_view(), name='contactus'),
-    url(r'^forum', views.IndexView.as_view(), name='forum'),
-    url(r'^legal', views.IndexView.as_view(), name='legal'),
-    url(r'^privacypolicy', views.IndexView.as_view(), name='privacypolicy'),
-    url(r'^search', views.IndexView.as_view(), name='search'),
-    url(r'^about', views.IndexView.as_view(), name='about'),
-    url('', views.IndexView.as_view(), name='index'),
+    url(r'^', views.index, name='feed'),
 ]
