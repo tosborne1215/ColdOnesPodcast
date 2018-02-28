@@ -1,7 +1,7 @@
 from django.contrib.syndication.views import Feed
 from django.utils import feedgenerator
-from django.urls import reverse
 from .models import Episode
+
 
 class iTunesFeed(feedgenerator.Rss201rev2Feed):
     def rss_attributes(self):
@@ -12,62 +12,67 @@ class iTunesFeed(feedgenerator.Rss201rev2Feed):
         attrs['version'] = "2.0"
         return attrs
 
-
     def add_root_elements(self, handler):
         super(iTunesFeed, self).add_root_elements(handler)
 
         handler.startElement("image", {})
-        handler.addQuickElement("url",self.feed['image']) 
+        handler.addQuickElement("url", self.feed['image'])
         handler.addQuickElement("title", self.feed['title'])
-        handler.addQuickElement("link",self.feed['feed_url'])
-        handler.addQuickElement("googleplay:image", '', {'href':'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'})
-        handler.addQuickElement("itunes:image", '', {'href':'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'})
+        handler.addQuickElement("link", self.feed['feed_url'])
+        handler.addQuickElement("googleplay:image", '', {
+                                'href': 'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'})
+        handler.addQuickElement("itunes:image", '', {
+                                'href': 'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'})
         handler.endElement("image")
 
-        handler.addQuickElement('itunes:explicit','yes')
+        handler.addQuickElement('itunes:explicit', 'yes')
         handler.addQuickElement("googleplay:explicit", 'yes')
-        handler.addQuickElement('itunes:image','',{'href':'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'})
-        handler.addQuickElement('itunes:category','',{'text':'Comedy'})
-        handler.addQuickElement('googleplay:category','',{'text':'Comedy'})
+        handler.addQuickElement('itunes:image', '', {
+                                'href': 'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'})
+        handler.addQuickElement('itunes:category', '', {'text': 'Comedy'})
+        handler.addQuickElement('googleplay:category', '', {'text': 'Comedy'})
 
         if self.feed['author_name'] is not None:
-            handler.addQuickElement("googleplay:author", self.feed['author_name'])
+            handler.addQuickElement(
+                "googleplay:author", self.feed['author_name'])
             handler.addQuickElement("itunes:author", self.feed['author_name'])
             handler.startElement("itunes:owner", {})
             handler.addQuickElement("itunes:name", self.feed['author_name'])
             if self.feed["author_email"] is not None:
-                handler.addQuickElement("itunes:email", self.feed["author_email"])
+                handler.addQuickElement(
+                    "itunes:email", self.feed["author_email"])
 
             handler.endElement("itunes:owner")
 
         if self.feed['author_email'] is not None:
-            handler.addQuickElement("googleplay:email", self.feed['author_email'])
+            handler.addQuickElement(
+                "googleplay:email", self.feed['author_email'])
             handler.addQuickElement("author", self.feed['author_email'])
 
         if self.feed['description'] is not None:
-            handler.addQuickElement("googleplay:description", self.feed['description'])
+            handler.addQuickElement(
+                "googleplay:description", self.feed['description'])
             handler.addQuickElement("itunes:summary", self.feed['description'])
 
-        
-
-    
     def add_item_elements(self, handler, item):
         super(iTunesFeed, self).add_item_elements(handler, item)
 
         if item['description'] is not None:
-            handler.addQuickElement("googleplay:description", item['description'])
+            handler.addQuickElement(
+                "googleplay:description", item['description'])
             handler.addQuickElement("itunes:summary", item['description'])
 
         if item['author_name'] is not None:
             handler.addQuickElement("googleplay:author", item['author_name'])
             handler.addQuickElement("itunes:author", item['author_name'])
 
+        # if item['image'] is not None:
+        handler.addQuickElement("googleplay:image", "", {
+                                "href": "https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg"})
 
-        #if item['image'] is not None:
-        handler.addQuickElement("googleplay:image","",{"href":"https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg"})
-
-        handler.addQuickElement('itunes:explicit','yes')
+        handler.addQuickElement('itunes:explicit', 'yes')
         handler.addQuickElement("googleplay:explicit", 'yes')
+
 
 class PodcastFeed(Feed):
     title = "A Couple Cold Ones"
@@ -80,24 +85,24 @@ class PodcastFeed(Feed):
     author_email = 'acouplecoldones@gmail.com'
     author_name = 'Shawn Freed, Ryan Shaner'
     image = 'https://episodes.nyc3.digitaloceanspaces.com/ColdOne/static-assets/mainimage.jpg'
-    
+
     def feed_extra_kwargs(self, obj):
         extra = {}
         extra['image'] = self.image
         return extra
-    
+
     def items(self):
-        return Episode.objects.order_by('-pub_date')[:5]
+        return Episode.objects.order_by('-pub_date')
 
     def item_title(self, item):
         return item.title
 
     def item_description(self, item):
         return item.description
-   
+
     def item_link(self, item):
         return self.episode_locations + item.file_location
-   
+
     def item_enclosure_url(self, item):
         return self.episode_locations + item.file_location
 
@@ -115,5 +120,3 @@ class PodcastFeed(Feed):
 
     def item_image(self, item):
         return self.image
-
-
