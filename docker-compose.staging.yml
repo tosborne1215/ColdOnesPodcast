@@ -1,0 +1,67 @@
+#####
+# Docker compose YAML file
+#
+# For documentation see: https://docs.docker.com/compose/yml/
+#####
+
+version: "3.3"
+
+volumes:
+    static-files:
+    pgdata:
+    
+services:
+    db:
+        image: postgres:9.6
+        volumes:
+            - pgdata:/var/lib/postgresql/data/pgdata
+        env_file:
+            - ./config/environment/webapp_staging.env
+        networks:
+            - default
+
+    webserver:
+        build:
+            context: .
+            dockerfile: services/webserver/Dockerfile
+        expose:
+            - "8081"
+        depends_on:
+            - webapp
+        volumes:
+            - static-files:/srv/static
+        env_file:
+            - ./config/environment/webserver_staging.env
+        networks:
+            - web
+            - default
+        labels:
+            - "traefik.backend=test.acouplecoldones.com"
+            - "traefik.docker.network=web"
+            - "traefik.frontend.rule=Host:staging.acouplecoldones.com"
+            - "traefik.enable=true"
+            - "traefik.port=8081"
+            - "traefik.default.protocol=http"
+
+    webapp:
+        build:
+            context: webapp
+            dockerfile: Dockerfile
+            args: 
+              DJANGO_PROJECT_NAME: website
+        volumes:
+            - ./webapp/website:/srv/website
+            - static-files:/srv/static
+        restart: unless-stopped
+        depends_on:
+            - db
+        env_file:
+            - ./config/environment/webapp_staging.env
+        networks:
+            - default
+        expose:
+            - "9002"
+            
+networks:
+    web:
+        external: true

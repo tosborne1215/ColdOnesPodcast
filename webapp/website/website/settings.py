@@ -29,7 +29,8 @@ if DEBUG is False:
     ALLOWED_HOSTS = ['www.acouplecoldones.com', 'acouplecoldones.com',
                      'coupleofcoldones.party', 'www.coupleofcoldones.party']
 else:
-    ALLOWED_HOSTS = ['test.acouplecoldones.com']
+    ALLOWED_HOSTS = ['test.acouplecoldones.com','staging.acouplecoldones.com', 
+                     'staging.coupleofcoldones.party', 'test.coupleofcoldones.party']
 
 
 # Application definition
@@ -86,7 +87,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'environment': 'website.jinja2_config.environment'
-        }
+        },
     }
 ]
 
