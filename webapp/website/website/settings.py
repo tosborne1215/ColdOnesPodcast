@@ -149,17 +149,11 @@ STATIC_URL = '/static/'
 # MEDIA_ROOT = ''
 # MEDIA_URL = ''
 
-do_blockstorage_ns = ''
-if DEBUG is True:
-    do_blockstorage_ns = 'TestColdOne'
-else:
-    do_blockstorage_ns = 'ColdOne'
-
 CUSTOM_STORAGE_OPTIONS = {
-    'aws_access_key_id': '6YAHACWH2IGRHFJCXIOU',
-    'aws_secret_access_key': 'crvP5sqsCT4feRnKu9KR16h5Z6BTH75zdA6PCZxeFps',
-    'endpoint_url': 'https://nyc3.digitaloceanspaces.com',
-    'region_name': 'nyc3',
-    'namespace': do_blockstorage_ns,
-    'bucket': 'episodes',
+    'aws_access_key_id': os.environ.get('CSO_KEY_ID'),
+    'aws_secret_access_key': os.environ.get('CSO_ACCESS_KEY'),
+    'endpoint_url': os.environ.get('CSO_ENDPOINT'),
+    'region_name': os.environ.get('CSO_REGION'),
+    'namespace': os.environ.get('CSO_NAMESPACE'),
+    'bucket': os.environ.get('CSO_BUCKET'),
 }
