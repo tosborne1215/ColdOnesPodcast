@@ -31,5 +31,5 @@ urlpatterns = [
         name='privacypolicy'),
     url(r'^search', views.SearchView.as_view(), name='search'),
     url(r'^about', views.AboutView.as_view(), name='about'),
-    url('', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
 ]

@@ -22,5 +22,6 @@ app_name = 'podcast'
 urlpatterns = [
     url(r'^podcast.rss$', PodcastFeed(), name='feed'),
     url(r'^episodes/', views.EpisodesView.as_view(), name='episodes'),
-    url(r'^episode/(?P<pk>[0-9]+)$', views.EpisodeView.as_view(), name='episode'),
+    url(r'^episode/(?P<pk>[0-9]+)$',
+        views.EpisodeView.as_view(), name='episode'),
 ]

@@ -1,33 +1,34 @@
 from django.views.generic.base import TemplateView
+from podcast.episode_context_mixin import EpisodeContextMixin
 
 
-class WebsiteView(TemplateView):
+class WebsiteView(TemplateView, EpisodeContextMixin):
     template_engine = 'jinja2'
 
 
-class IndexView(WebsiteView):
+class IndexView(WebsiteView, EpisodeContextMixin):
     template_name = 'index.html'
 
 
-class ContactUsView(WebsiteView):
+class ContactUsView(WebsiteView, EpisodeContextMixin):
     template_name = 'contactus.html'
 
 
-class ForumView(WebsiteView):
+class ForumView(WebsiteView, EpisodeContextMixin):
     template_name = 'forum.html'
 
 
-class LegalView(WebsiteView):
+class LegalView(WebsiteView, EpisodeContextMixin):
     template_name = 'legal.html'
 
 
-class PrivacyPolicyView(WebsiteView):
+class PrivacyPolicyView(WebsiteView, EpisodeContextMixin):
     template_name = 'privacypolicy.html'
 
 
-class SearchView(WebsiteView):
+class SearchView(WebsiteView, EpisodeContextMixin):
     template_name = 'search.html'
 
 
-class AboutView(WebsiteView):
+class AboutView(WebsiteView, EpisodeContextMixin):
     template_name = 'about.html'
