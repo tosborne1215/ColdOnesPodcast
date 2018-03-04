@@ -1,0 +1,21 @@
+@font-face {
+    font-family: IceCaps;
+    src: url(font/IceCaps.ttf);
+}
+
+.ice-font-button {
+	font-family: IceCaps;
+	font-size: 1.5rem;
+	height: 40px;
+	vertical-align: middle;
+	padding-right: 1em;
+	color: blue;
+	position: relative;
+	top: -0.8em;
+}
+
+.ice-font-button > span {
+	position: relative;
+	top: -0.5em;
+	left: 2em;
+}

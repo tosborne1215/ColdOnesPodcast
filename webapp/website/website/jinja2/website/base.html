@@ -8,46 +8,52 @@
 		<title>{% block title %}ColdOnes Podcast{% endblock %}</title>
 		<meta name="description" content="{% block description %}Homepage of the ColdOnes Podcast!{% endblock %}">
 		
-		<!-- TODO: Add favicon -->
-		<link rel="icon" type="image/png" href="">
-		<link rel="apple-touch-icon" href="">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ static("website/apple-touch-icon.png") }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ static("website/favicon-32x32.png") }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ static("website/favicon-16x16.png") }}">
+		<link rel="manifest" href="{{ static("website/site.webmanifest") }}">
+		<link rel="mask-icon" href="{{ static("website/safari-pinned-tab.svg") }}" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#2d89ef">
+		<meta name="theme-color" content="#ffffff">
 
-		<!-- TODO: What is this? if I support it I need a browserconfig.xml -->
-		<meta name="msapplication-config" content="browserconfig.xml">
-		
+		<!-- MS Stuff -->
+		<meta name="msapplication-config" content="{{ static("website/browserconfig.xml") }}">
+		<meta name="application-name" content="A Couple of Cold Ones Podcast"/>
+
 		{% block canonical_url %}
 		<link rel="canonical" href="">
 		{% endblock %}
 
 		<!-- Critical CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-				{% block critical_css %}
+		{% block critical_css %}
 		<style>
 			
-				</style>
+		</style>
 		{% endblock %}
 
 		<!-- Facebook OG Card and Twitter Card -->
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://example.com/page.html">
-		<meta property="og:title" content="Content Title">
-		<meta property="og:image" content="https://example.com/image.jpg">
-		<meta property="og:description" content="Description Here">
-		<meta property="og:site_name" content="Site Name">
+		<meta property="og:url" content="{{ url("index") }}">
+		<meta property="og:title" content="A Couple of Cold Ones Podcast">
+		<meta property="og:image" content="{{ static("website/img/coldones_banner.jpg") }}">
+		<meta property="og:description" content="This podcast will discuss current events and pop culture through the lens of some rather dark and drunk individuals.">
+		<meta property="og:site_name" content="A Couple of Cold Ones Podcast">
 		<meta property="og:locale" content="en_US">
 		<!-- Next tags are optional but recommended -->
 		<meta property="og:image:width" content="1200">
 		<meta property="og:image:height" content="630">
 
-		<meta name="twitter:card" content="summary">
+		<meta name="twitter:card" content="This podcast will discuss current events and pop culture through the lens of some rather dark and drunk individuals.">
 		<meta name="twitter:site" content="@site_account">
 		<meta name="twitter:creator" content="@individual_account">
-		<meta name="twitter:url" content="https://example.com/page.html">
-		<meta name="twitter:title" content="Content Title">
-		<meta name="twitter:description" content="Content description less than 200 characters">
-		<meta name="twitter:image" content="https://example.com/image.jpg">
+		<meta name="twitter:url" content="{{ url("index") }}">
+		<meta name="twitter:title" content="A Couple of Cold Ones Podcast">
+		<meta name="twitter:description" content="This podcast will discuss current events and pop culture through the lens of some rather dark and drunk individuals.">
+		<meta name="twitter:image" content="{{ static("website/favicon-32x32.png") }}">
 		
 		<link rel="stylesheet" type="text/css" href="{{ static("website/css/normalize.css") }}">
+		<link rel="stylesheet" type="text/css" href="{{ static("website/css/website.css") }}">
 		{% block page_css %}
 		<!-- CSS Files -->
 		{% endblock %}
@@ -84,10 +90,10 @@
 							<span class="navbar-toggler-icon"></span>
 						</button>
 
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<div class="collapse navbar-collapse pt-3 pt-lg-0 pr-lg-4 pl-lg-4" id="navbarSupportedContent">
 							<ul class="navbar-nav mr-auto">
 								<li class="nav-item active">
-									<a class="nav-link" href="{{ url("index") }}">Home <span class="sr-only">(current)</span></a>
+									<a class="nav-link ice-font-button" href="{{ url("index") }}">A Couple Cold Ones<br><span>Podcast</span><span class="sr-only">(current)</span></a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="{{ url("about") }}">About</a>
@@ -108,8 +114,8 @@
 									</a>
 									
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-										<a class="dropdown-item" href="{{ url("podcast:episode", args=(latest,)) }}">Latest <span class="badge badge-secondary">New</span></a>
-										<a class="dropdown-item" href="{{ url("podcast:episode", args=(previous,)) }}">Previous</a>
+										<a class="dropdown-item" href="{{ url("podcast:episode", args=(latest.id,)) }}">Latest <span class="badge badge-secondary">New</span></a>
+										<a class="dropdown-item" href="{{ url("podcast:episode", args=(previous.id,)) }}">Previous</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="{{ url("podcast:episodes") }}">Archive</a>
 									</div>
@@ -139,44 +145,44 @@
 				{% block promo_panel %}
 				<div class="order-3 order-md-3 col-10 col-md-12 col-lg-1 mt-md-5 align-items-center ml-auto mr-auto" style="min-width: 10em;">
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=T-Shirts or our store" />
+						<img src="https://via.placeholder.com/150x150?text=T-Shirts or our store" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=T-Shirts or our store" />
+						<img src="https://via.placeholder.com/150x150?text=T-Shirts or our store" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Look at this promo" />
+						<img src="https://via.placeholder.com/150x150?text=Look at this promo" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Pormo3" />
+						<img src="https://via.placeholder.com/150x150?text=Pormo3" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=PORN2" />
+						<img src="https://via.placeholder.com/150x150?text=Just a test" />
 					</a>
 				</div>
 				{% endblock %}
 				{% block ad_panel %}
 				<div class="order-2 order-md-2 order-lg-1 col-10 col-md-2 col-lg-1 mt-md-5 align-items-center ml-auto mr-auto" style="min-width: 10em;">
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 					<a href="#">
-						<img src="http://via.placeholder.com/150x150?text=Your Ad Here" />
+						<img src="https://via.placeholder.com/150x150?text=Your Ad Here" />
 					</a>
 				</div>
 

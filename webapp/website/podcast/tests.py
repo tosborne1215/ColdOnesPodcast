@@ -2,7 +2,6 @@ import unittest
 from django.test import Client, TestCase
 from django.core.urlresolvers import reverse
 from .models import Episode
-from lxml import etree
 
 # note - this code can be run only once. Hack to allow acces to context variables
 # See here: https://stackoverflow.com/questions/1941980/how-can-i-access-response-context-when-testing-a-jinja2-powered-django-view
@@ -40,12 +39,12 @@ class PodcastTest(TestCase):
     def test_index_has_latest_episode_context(self):
         response = self.client.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.context['latest'], 8)
+        self.assertEquals(response.context['latest'].id, 8)
 
     def test_index_has_previous_episode_context(self):
         response = self.client.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.context['previous'], 7)
+        self.assertEquals(response.context['previous'].id, 7)
 
     def test_index_has_latest_episode_link(self):
         response = self.client.get(reverse('index'))
@@ -117,4 +116,13 @@ class PodcastFeedTest(TestCase):
 
     # TODO: I'm not sure how to effectively test this
     def test_rss_feed_episode_order(self):
+        pass
+
+
+class EpisodeUploadTest(TestCase):
+
+    def test_upload(self):
+        pass
+
+    def test_download(self):
         pass

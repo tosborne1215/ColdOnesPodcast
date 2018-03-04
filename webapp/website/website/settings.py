@@ -149,6 +149,7 @@ STATIC_URL = '/static/'
 # MEDIA_ROOT = ''
 # MEDIA_URL = ''
 
+# I wonder if this should be PODCAST -> CUSTOM_STORAGE_OPTIONS ?
 CUSTOM_STORAGE_OPTIONS = {
     'aws_access_key_id': os.environ.get('CSO_KEY_ID'),
     'aws_secret_access_key': os.environ.get('CSO_ACCESS_KEY'),
