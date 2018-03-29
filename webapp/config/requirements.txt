@@ -3,3 +3,4 @@ psycopg2
 Jinja2
 uwsgi
 boto3
+SpeechRecognition
