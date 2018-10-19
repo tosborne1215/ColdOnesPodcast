@@ -39,22 +39,22 @@ class PodcastTest(TestCase):
     def test_index_has_latest_episode_context(self):
         response = self.client.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.context['latest'].id, 8)
+        self.assertEquals(response.context['latest'].id, 10)
 
     def test_index_has_previous_episode_context(self):
         response = self.client.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.context['previous'].id, 7)
+        self.assertEquals(response.context['previous'].id, 9)
 
     def test_index_has_latest_episode_link(self):
         response = self.client.get(reverse('index'))
         self.assertContains(
-            response, """<a class="dropdown-item" href="/podcast/episode/8">Latest <span class="badge badge-secondary">New</span></a>""", 1, 200)
+            response, """<a class="dropdown-item" href="/podcast/episode/10">Latest <span class="badge badge-secondary">New</span></a>""", 1, 200)
 
     def test_index_has_previous_episode_link(self):
         response = self.client.get(reverse('index'))
         self.assertContains(
-            response, """<a class="dropdown-item" href="/podcast/episode/7">Previous</a>""", 1, 200)
+            response, """<a class="dropdown-item" href="/podcast/episode/9">Previous</a>""", 1, 200)
 
     def test_episode_list_page(self):
         response = self.client.get(reverse('podcast:episodes'))

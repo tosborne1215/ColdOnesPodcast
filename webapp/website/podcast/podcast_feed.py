@@ -101,10 +101,10 @@ class PodcastFeed(Feed):
         return item.description
 
     def item_link(self, item):
-        return self.episode_locations + item.file_location
+        return self.episode_locations + item.episode_file.url
 
     def item_enclosure_url(self, item):
-        return self.episode_locations + item.file_location
+        return self.episode_locations + item.episode_file.url
 
     def item_pubdate(self, item):
         return item.pub_date
